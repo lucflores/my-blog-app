@@ -4,25 +4,30 @@ import Navbar from '../components/Navbar';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 export default function Blog() {
-  return (
-    <>
-      <Header />
-      <Navbar />
-      <Container className="my-4">
-        <Row>
-          <Col md={4}>
-            <Card>
-              <Card.Img variant="top" src="https://via.placeholder.com/300" />
+return (
+  <div className="d-flex flex-column min-vh-100">
+    <Header />
+    <Navbar />
+    
+    <Container as="main" className="my-5 flex-grow-1">
+      <Row className="g-4">
+        {[1, 2, 3].map((item) => (
+          <Col md={4} key={item}>
+            <Card className="shadow-sm">
+              <Card.Img variant="top" src="https://picsum.photos/300/200" />
               <Card.Body>
-                <Card.Title>Publicación 1</Card.Title>
-                <Card.Text>Texto de prueba para la publicación 1.</Card.Text>
+                <Card.Title>Publicación {item}</Card.Title>
+                <Card.Text>
+                  Texto de prueba para la publicación {item}.
+                </Card.Text>
               </Card.Body>
             </Card>
           </Col>
-          {/* Repetí con otras columnas si querés más publicaciones */}
-        </Row>
-      </Container>
-      <Footer />
-    </>
-  );
+        ))}
+      </Row>
+    </Container>
+
+    <Footer />
+  </div>
+);
 }
